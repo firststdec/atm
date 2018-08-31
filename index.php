@@ -81,6 +81,8 @@
 								
 								
 								$balance = ($balance-($temp_amount*((int)$index)));
+								//update money in machine
+								$banknotes_array[((string)$index)] = $banknotes_array[((string)$index)]-$temp_amount;
 								
 								$tracking_notes .= '<span style="color:#606060;font-size:11px;">Banknotes '.((int)$index).' amount : '. $temp_amount .'  pcs. ';
 								$tracking_notes .= '[The Remaining : '.$balance.']</span><br />';
@@ -102,6 +104,8 @@
 									}		
 									
 									$balance = ($balance-($temp_amount*((int)$index)));
+									//update money in machine
+									$banknotes_array[((string)$index)] = $banknotes_array[((string)$index)]-$temp_amount;
 									
 									$tracking_notes .= '<br /><span style="color:#606060;font-size:11px;">Banknotes '.((int)$index).' amount : '. $temp_amount .'  pcs. ';
 									$tracking_notes .= '[The Remaining : '.$balance.']</span><br />';
@@ -121,7 +125,8 @@
 			}else{
 				$error .= 'Please withdraw a minimum of 20 baht.<br/>';
 			}
-
+			
+			$tracking_notes .= '<br/><br/><br/><span style="color:#CCCC;font-size:11px;">The money in machine is '.http_build_query($banknotes_array).'</span>';
 		}
 		
 ?>
